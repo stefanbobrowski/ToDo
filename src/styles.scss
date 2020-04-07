@@ -1,0 +1,187 @@
+// Main Font
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Noto+Sans&display=swap");
+// Screen sizes
+$mobile-width: 480px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+$app-width: 1024px;
+// Fonts
+$main-font: "Noto Sans";
+// Mini reset
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: $main-font;
+  font-size: 12px;
+
+  @media screen and (min-width: $mobile-width) {
+    font-size: 14px;
+  }
+
+  @media screen and (min-width: $tablet-width) {
+    font-size: 16px;
+  }
+
+  @media screen and (min-width: $desktop-width) {
+    font-size: 18px;
+  }
+}
+
+body {
+  margin: 0;
+  background-color: #fff;
+}
+
+// Common Elements
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 0.7rem 0;
+  line-height: 1;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+h2 {
+  font-size: 1.7rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.3rem;
+}
+
+h5 {
+  font-size: 1.1rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+p {
+  max-width: 672px;
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  line-height: 1.2rem;
+}
+// Projects
+
+.project {
+  > main {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  &.todo-project {
+    .todos-container {
+      margin-bottom: 1rem;
+      background-color: #e7ecf1;
+      border: 1px solid black;
+      padding: 0.5rem;
+
+      .todos {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        min-height: 360px;
+        max-height: 572px;
+        flex-wrap: wrap;
+
+        .todo {
+          display: flex;
+          max-width: 48%;
+          align-items: center;
+          padding: 0.5rem;
+          margin: 0.2rem;
+          border: 1px solid black;
+          position: relative;
+          word-break: break-word;
+
+          .checkbox {
+            display: flex;
+            margin-right: 0.6rem;
+            border: 1px solid black;
+
+            &:hover {
+              cursor: pointer;
+            }
+
+            span {
+              width: 1.4rem;
+              height: 1.4rem;
+            }
+          }
+
+          p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            padding-right: 1.4rem;
+            filter: invert(1);
+            word-break: break-word;
+
+            span {
+              word-break: break-word;
+            }
+          }
+
+          .delete {
+            position: absolute;
+            top: 0.2rem;
+            right: 0.2rem;
+            font-size: 0.8rem;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+
+    .control-container {
+      display: flex;
+
+      .create-todo-form {
+        flex: 1 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.5rem;
+        border: 1px solid black;
+        position: relative;
+        margin-right: 1rem;
+        background-color: #e7ecf1;
+
+        input {
+          margin-bottom: 0.4rem;
+        }
+      }
+
+      .message-box {
+        flex: 1 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+        border: 1px solid black;
+        background-color: #e7ecf1;
+      }
+    }
+  }
+}

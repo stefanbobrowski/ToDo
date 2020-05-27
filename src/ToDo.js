@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 
-const ToDo = () => {
+const ToDoList = () => {
   const [todos, setTodos] = useState([
     {
-      content: "Learn React Hooks",
+      content: "Learn React with hooks",
       color: "#87eba9",
       complete: true,
     },
     {
-      content: "Learn the MERN stack",
+      content: "Create full stack applications with the MERN stack",
       color: "#87ceeb",
       complete: true,
     },
     {
-      content: "Continue making clients happy",
+      content: "Learn a new technology",
       color: "#d8bfd8",
       complete: false,
     },
@@ -110,60 +110,63 @@ const ToDo = () => {
       setMessage(newMessage);
     } else {
       let newMessage = {
-        content: "To-Do not completed...",
-        color: "#ec1515",
+        content: "To-Do not complete",
+        color: "#eac711",
       };
       setMessage(newMessage);
     }
   };
 
   return (
-    <div className="project todo-project">
-      <main>
-        <h1 className="page-header">To-Do List</h1>
-        <p>My React Hooks implementation of the classic To-Do list.</p>
-        <section className="todos-container">
-          {todos.length ? (
-            <div className="todos">
-              {todos.map((t, i) => {
-                return (
-                  <div
-                    className="todo"
-                    key={i}
-                    index={i}
-                    style={{ backgroundColor: t.color }}
-                  >
-                    <div className="checkbox" onClick={() => handleCheck(i)}>
-                      <span>{t.complete ? "✔️" : ""}</span>
-                    </div>
-                    <div>
-                      {t.complete ? (
-                        <p>
-                          <strike style={{ color: t.color }}>
-                            {t.content}
-                          </strike>
-                        </p>
-                      ) : (
-                        <p style={{ color: t.color }}>{t.content}</p>
-                      )}
-                    </div>
-                    <span className="delete" onClick={() => handleDelete(i)}>
-                      ❌
-                    </span>
+    <div className="todo-list">
+      <h1 className="page-header">To-Do List</h1>
+      <p>
+        Got things to do? My React Hooks implementation of the classic To-Do
+        List app.
+      </p>
+      <section className="todos-container">
+        {todos.length ? (
+          <div className="todos">
+            {todos.map((t, i) => {
+              return (
+                <div
+                  className="todo"
+                  key={i}
+                  index={i}
+                  style={{ backgroundColor: t.color }}
+                >
+                  <div className="checkbox" onClick={() => handleCheck(i)}>
+                    <span>{t.complete ? "✔️" : ""}</span>
                   </div>
-                );
-              })}
-            </div>
-          ) : (
-            <div>
-              <p>Nothing To Do!</p>
-            </div>
-          )}
-        </section>
-        <section className="control-container">
-          <form className="create-todo-form" onSubmit={handleCreateTodo}>
-            <label>Create new ToDo</label>
+                  <div className="todo-title">
+                    {t.complete ? (
+                      <p>
+                        <strike style={{ color: t.color }}>{t.content}</strike>
+                      </p>
+                    ) : (
+                      <p style={{ color: t.color }}>{t.content}</p>
+                    )}
+                  </div>
+                  <span className="delete" onClick={() => handleDelete(i)}>
+                    ❌
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div>
+            <p>Nothing To Do!</p>
+          </div>
+        )}
+      </section>
+      <section className="control-container">
+        <form className="create-todo-form" onSubmit={handleCreateTodo}>
+          <h5>Add a new To-Do:</h5>
+          <div className="todo-inputs">
             <input
+              type="text"
+              maxLength="70"
               onChange={(e) =>
                 setTempTodo({
                   ...tempTodo,
@@ -173,25 +176,28 @@ const ToDo = () => {
               }
             ></input>
             <input
-              name="color-picker"
               type="color"
+              title="To-Do color"
               defaultValue="#ffffff"
               onChange={(e) =>
                 setTempTodo({ ...tempTodo, color: e.target.value })
               }
             />
-            <button>Submit ToDo</button>
-          </form>
-          <div className="message-box">
-            <p>
-              To-Do's completed: {completedCount} / {todos.length}
-            </p>
-            <p style={{ color: message.color }}>{message.content}</p>
           </div>
-        </section>
-      </main>
+
+          <button type="submit" title="Add To-Do">
+            Add To-Do
+          </button>
+        </form>
+        <div className="message-box">
+          <h5>
+            To-Do's completed: {completedCount} / {todos.length}
+          </h5>
+          <p style={{ color: message.color }}>{message.content}</p>
+        </div>
+      </section>
     </div>
   );
 };
 
-export default ToDo;
+export default ToDoList;
